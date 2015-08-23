@@ -1,0 +1,213 @@
+<!DOCTYPE html>
+<html ng-app="appBehance">
+<head>
+
+	<meta charset="utf-8">
+	<meta http-equiv="X-UA-Compatible" content="IE=edge">
+	<!--Let browser know website is optimized for mobile-->
+	<meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+	<title>Portfólio using API Behance</title>
+	<!--Import materialize.css-->
+	<link type="text/css" rel="stylesheet" href="css/materialize.min.css"  media="screen,projection" />
+	<!--Import fontello.css-->
+	<link type="text/css" rel="stylesheet" href="css/fontello.css" />
+	<!--Import custom.css-->
+	<link type="text/css" rel="stylesheet/less" href="css/custom.less" />
+	<!--Import responsive.css-->
+	<link type="text/css" rel="stylesheet" href="css/responsive.css" />
+	<!--Icons Material Design by Google-->
+	<link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet" />
+
+</head>
+<body>
+
+	<header class="page-header" ng-controller="controllerUser">
+
+		<nav>
+			
+			<!-- Menu Vertical -->
+			<ul id="slide-out" class="side-nav fixed">
+				<li class="noPadding user-profile">
+					<div class="card side-nav-card noMargin noBorderRadius noShadow">
+						<div class="card-image card-image-drawer waves-effect waves-block waves-light">
+							<div class="nickname">{{data.user.username}}</div>
+							<a target="_blank" class="tooltipped no-padding" data-position="right" data-delay="20" data-tooltip="Go to my Behance" href="{{data.user.url}}">
+								<img class="noBorderRadius" src="{{data.user.images[276]}}" alt="" />
+							</a>
+						</div>
+					</div>
+				</li>
+				<li class="no-padding"><a><i class="icon-user"></i>{{data.user.display_name}}</a></li>
+				<li class="no-padding"><a><i class="icon-location"></i>{{data.user.location}}</a></li>
+				<li class="no-padding"><a><i class="icon-eye"></i>Project Views<span class="right badge new indigo darken-4">{{data.user.stats.views}}</span></a></li>
+				<li class="no-padding"><a><i class="icon-heart-filled"></i>Appreciations<span class="right badge new indigo darken-4">{{data.user.stats.appreciations}}</span></a></li>
+				<li class="no-padding"><a><i class="icon-forward"></i>Followers<span class="right badge new indigo darken-4">{{data.user.stats.followers}}</span></a></li>
+				<li class="no-padding"><a><i class="icon-reply"></i>Following<span class="right badge new indigo darken-4">{{data.user.stats.following}}</span></a></li>
+				<div ng-if="data.user.fields != ''">
+					<li class="no-padding">
+						<ul class="collapsible" data-collapsible="accordion">
+							<li>
+								<a class="no-padding collapsible-header waves-effect waves-indigo"><i class="tiny icon-down-small"></i>About me</a>
+								<ul class="collapsible-body">
+									<li data-ng-repeat="section in data.user.sections">
+										<a class="about-me">{{section}}</a>
+									</li>
+								</ul>
+							</li>
+						</ul>
+					</li>
+				</div>
+				<div ng-if="data.user.fields != ''">
+					<li class="bold no-padding">
+						<ul class="collapsible" data-collapsible="accordion">
+							<li>
+								<a class="no-padding collapsible-header waves-effect waves-indigo"><i class="tiny icon-down-small"></i>Focus</a>
+								<ul class="collapsible-body">
+									<li data-ng-repeat="field in data.user.fields"><a class="no-padding">{{field}}</a></li>
+								</ul>
+							</li>
+						</ul>
+					</li>
+				</div>
+			</ul>
+
+			<div class="container">
+				<a class="button-collapse top-nav full hide-on-large-only" data-activates="slide-out" href="#"><i class="medium mdi-navigation-menu"></i></a>
+			</div>
+
+			<!-- Menu horizontal -->			
+			<div class="navbar-fixed icons-top">
+				<nav class="indigo darken-4">
+					<div class="nav-wrapper">
+
+						<!-- UL left -->
+						<div ng-if="data.user.features != undefined">
+							<ul class="features right padding-modify-top">
+								<li>
+									<a class="left">FEATURED IN</a>
+									<div class="links left">
+										<a data-ng-repeat="feature in data.user.features" target="_blank" href="http://{{feature.site.domain}}" class="tooltipped left" data-position="bottom" data-delay="20" data-tooltip="Go to {{feature.site.domain}}"><img  src="{{feature.site.ribbon.image}}" /></a>
+									</div>
+								</li>
+							</ul>
+						</div>
+
+						<!-- UL right -->
+						<ul class="right {{data.user.features ? '' : 'padding-modify-top'}}">
+							<div class="left" ng-if="data.user.links != ''">
+								<li>
+									<a class="dropdown-button tooltipped" href='#' data-activates="links1" data-position="bottom" data-delay="20" data-tooltip="See Web References"><i class="icon-link"></i></a>
+									<ul id='links1' class='dropdown-content'>
+										<li data-ng-repeat="link in data.user.links"><a class="colorDefault" href="{{link.url}}" target="_blank">{{link.title}}</a></li>
+									</ul>
+								</li>
+							</div>
+							<li data-ng-repeat="social_link in data.user.social_links">
+								<a target="_blank" href="{{social_link.url}}" class="tooltipped" data-position="bottom" data-delay="20" data-tooltip="Go to {{social_link.service_name}}">
+									<div ng-if="social_link.service_name == 'Facebook'"><i class="icon-facebook"></i></div>
+									<div ng-if="social_link.service_name == 'Twitter'"><i class="icon-twitter"></i></div>
+									<div ng-if="social_link.service_name == 'LinkedIn'"><i class="icon-linkedin"></i></div>
+									<div ng-if="social_link.service_name == 'Tumblr'"><i class="icon-tumblr"></i></div>
+									<div ng-if="social_link.service_name == 'Pinterest'"><i class="icon-pinterest"></i></div>
+									<div ng-if="social_link.service_name == 'Instagram'"><i class="icon-instagram"></i></div>
+									<div ng-if="social_link.service_name == 'Vimeo'"><i class="icon-vimeo"></i></div>
+									<div ng-if="social_link.service_name == 'Dribbble'"><i class="icon-dribbble"></i></div>
+									<div ng-if="social_link.service_name == 'YouTube'"><i class="icon-youtube"></i></div>
+								</a>
+							</li>
+						</ul>
+					</div>
+				</nav>
+			</div>
+
+		</nav>
+
+	</header>
+
+	<main class="main" ng-controller="controllerProject">
+
+		<div class="container top-container-main">
+			<div class="row card-open">
+
+				<!-- Cards -->
+				<div data-ng-repeat="project in projects" class="col s12 m6 l3 card-custom" ng-click="selectProject(project.id)">
+
+					<div class="preloader-wrapper small active">
+						<div class="spinner-layer spinner-blue-only">
+							<div class="circle-clipper left">
+								<div class="circle"></div>
+							</div>
+							<div class="gap-patch">
+								<div class="circle"></div>
+							</div>
+							<div class="circle-clipper right">
+								<div class="circle"></div>
+							</div>
+						</div>
+					</div>
+        
+					<div class="card medium transitions">
+						<div class="card-image">
+							<img class="img-card" src="{{project.covers[404]}}">
+						</div>
+						<div class="card-content">
+							<p>{{project.name}}</p>
+						</div>
+						<div class="card-action">
+							<a><i class="icon-eye"></i>{{project.stats.views}}</a>
+							<a><i class="icon-heart-filled"></i>{{project.stats.appreciations}}</a>
+							<a><i class="icon-comment-1"></i>{{project.stats.comments}}</a>
+						</div>
+					</div>
+				</div>
+
+			</div>
+
+			<div class="row center">
+				<button ng-click="loadProject(count = count + 1)" class="btn waves-effect waves-light" type="submit" name="action">
+					load more <i class="icon-arrows-cw tiny"></i>
+				</button>
+			</div>
+
+		</div>
+
+		<!-- Modal -->
+		<div id="modal1" class="modal modal-fixed-footer">
+			<div class="modal-content" ng-show="modalContent" style="background-color:{{dataProject.project.styles.background.color}}">
+				<h5>{{dataProject.project.name}}</h5>
+				<div class="content-project row">
+					<div class="col s12">
+						<div data-ng-repeat="module in dataProject.project.modules">
+							<div ng-if="module.text" ng-bind-html="module.text | html"></div>
+							<div class="center">
+								<img ng-if="module.sizes.original" src="{{module.sizes.original}}" />
+							</div>
+						</div>
+					</div>
+				</div>
+			</div>
+			<div class="modal-footer">
+				<a class="modal-action modal-close waves-effect waves-green btn-flat">close</a>
+			</div>
+		</div>
+
+	</main>
+
+	<!--Libraries-->
+	<script type="text/javascript" src="js/jquery.min.js"></script>
+	<script type="text/javascript" src="js/angular.min.js"></script>
+	<!-- Less -->
+	<script type="text/javascript" src="js/less.min.js"></script>
+	<!--Import jQuery before materialize.js-->
+	<script type="text/javascript" src="js/materialize.min.js"></script>
+	<!-- Script Application Angular-->
+	<script type="text/javascript">
+		var user   = 'imcreator'; //username - more: (weareuna, alegiorgini, josephveazey, nikaorlova, Sukanto_D, Osborne, leonatsume, Aliyahya, marcelo_jr, lostproject)
+		var apiKey = 'RxQOye91KfvOx2BceyYrpJ8Ckt6oURmy'; //key - more: (RxQOye91KfvOx2BceyYrpJ8Ckt6oURmy)
+	</script>
+	<script type="text/javascript" src="js/script-angular.js"></script>
+	<!-- Script Application jQuery-->
+	<script type="text/javascript" src="js/script-jquery.js"></script>
+
+</body>
+</html>
