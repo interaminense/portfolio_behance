@@ -23,6 +23,4 @@ $(window).load(function(){
 	    $('#modal1').openModal();
 	});
 
-
-
 });

@@ -46,16 +46,23 @@ app.controller('controllerProject', function($scope, $http){
     	$scope.modalContent = false;
 
         $urlEspecificProject = 'http://www.behance.net/v2/projects/'+ project +'?api_key='+ apiKey +'&callback=JSON_CALLBACK';
+        $urlCommentProject = 'http://www.behance.net/v2/projects/'+ project +'/comments?api_key='+ apiKey +'&callback=JSON_CALLBACK';
 
-		$http.jsonp($urlEspecificProject).success(function(data){
-	    	$scope.dataProject = data;
-	    	console.log(data);
-	    	$scope.modalContent = true;
-	    }).error(function(data, status){
-	    	console.warn("ApiKey not found! status: " + status);
-	    });
+        $http.jsonp($urlEspecificProject).success(function(data){
+            $scope.dataProject = data;
+            $scope.modalContent = true;
+        }).error(function(data, status){
+            console.warn("ApiKey not found! status: " + status);
+        });
     
+        $http.jsonp($urlCommentProject).success(function(data){
+            $scope.commentsProject = data;
+        }).error(function(data, status){
+            console.warn("ApiKey not found! status: " + status);
+        });
+
     };
+
 
 });
 
