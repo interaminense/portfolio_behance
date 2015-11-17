@@ -1,0 +1,282 @@
+/*Variables*/
+
+@colorDefault1: rgba(63, 81, 181, 0.65);
+@colorDefault2: rgba(63, 81, 181, 1);
+@transitions: all 400ms;
+
+/*Defaults*/
+
+.transitions {
+    transition: @transitions;
+}
+
+.colorDefault {
+    color: @colorDefault2 !important;
+}
+
+.waves-effect.waves-indigo .waves-ripple {
+    background-color: @colorDefault1;
+}
+
+.noShadow { box-shadow: none !important; }
+
+.noPadding { padding: 0 !important; }
+.noTopPadding { padding-top: 0 !important; }
+.noBottomPadding { padding-bottom: 0 !important; }
+.noRightPadding { padding-right: 0 !important; }
+.noLeftPadding { padding-left: 0 !important; }
+
+.noMargin { margin: 0 !important; }
+.noTopMargin { margin-top: 0 !important; }
+.noBottomMargin { margin-bottom: 0 !important; }
+.noRightMargin { margin-right: 0 !important; }
+.noLeftMargin { margin-left: 0 !important; }
+
+.noBorderRadius { border-radius: 0 !important; }
+
+html {
+    font-size: 14px;
+}
+
+/*Sticky footer*/
+
+body {
+    display: -webkit-flex;
+    display: -ms-flexbox;
+    display: flex;
+    min-height: 100vh;
+    -webkit-flex-direction: column;
+        -ms-flex-direction: column;
+            flex-direction: column;
+    background-color: #fcfcfc;
+    display: none;
+}
+
+main {
+    -webkit-flex: 1 0 auto;
+        -ms-flex: 1 0 auto;
+            flex: 1 0 auto;
+}
+
+/*Adjust with sidenav vertical*/
+
+header, main, footer {
+    padding-left: 240px;
+}
+
+/*Profile user*/
+
+.user-profile img {
+    display: table;
+}
+
+/*Ajust in Materialize.css*/
+
+ul.side-nav.fixed li a {
+    min-height: 40px;
+    line-height: 40px;
+    height: auto;
+}
+
+/*Icons*/
+
+i.tiny { font-size: 1rem !important; width: 1rem !important; } 
+i.small { font-size: 2rem !important; width: 2rem !important; } 
+i.medium { font-size: 4rem !important; width: 4rem !important; } 
+i.large { font-size: 6rem !important; width: 6rem !important; }
+
+/*-----Generical adjusts-----*/
+
+/*card image user*/
+
+.nickname {
+    border-radius: 3px;
+    bottom: 10px;
+    line-height: normal;
+    padding: 2px 6px;
+    position: absolute;
+    right: 10px;
+    text-shadow: 1px 1px 3px rgba(0, 0, 0, 0.9);
+    z-index: 1;
+}
+
+/*header*/
+
+#links1 {
+    width: 200px !important;
+    top: 64px !important;
+}
+
+.icons-top i {
+    font-size: 20px !important;
+}
+
+.padding-modify-top {
+    padding-right: 260px;
+}
+
+nav .button-collapse i {
+    font-size: 2.3rem !important;
+    line-height: 52px;
+}
+
+nav .button-collapse {
+    z-index: 999 !important;
+    position: fixed;
+}
+
+.side-nav {
+    z-index: 1000 !important;
+}
+
+/*sidebar vertical*/
+
+ul.side-nav.fixed li a.about-me {
+    font-size: 0.8em;
+    line-height: 26px;
+    margin: 0 1rem 0 1rem;
+}
+
+ul.side-nav.fixed i {
+    margin-right: 0.6em;
+}
+
+ul.side-nav.fixed li ul li i {
+    margin-right: 1em;
+}
+
+ul.side-nav .badge.new {
+    line-height: 100%;
+    margin: 8px 0;
+    padding: 7px;
+}
+
+ul.side-nav span.badge.new:after {
+    content: "" !important;
+}
+
+/*Features*/
+
+.features {
+    height: 75px;
+}
+
+.features a {
+    font-size: 10px;
+}
+
+.features li, .features .links, .features .links a {
+    height: inherit;
+}
+
+.features li:hover {
+    background-color: rgba(0, 0, 0, 0) !important;
+}
+
+.features .links {
+    position: relative;
+    top: 18px;
+}
+
+.features .links a {
+    border-radius: 2px 2px 0 0;
+    margin: 0 4px;
+    overflow: hidden;
+    padding: 0;
+}
+
+/*Main*/
+
+/*Cards*/
+
+.card-custom .card {
+    /* opacity: 0; */
+    opacity: 1;
+}
+
+.card-custom p {
+    text-transform: uppercase;
+}
+
+.card-custom .card-action a {
+    color: @colorDefault2 !important;
+}
+
+.card-custom .card-image img {
+    height: inherit;
+}
+
+/*Modal*/
+
+.modal {
+    height: 90% !important;
+    max-height: 90% !important;
+    top: 5% !important;
+    width: 70% !important;
+}
+
+.modal .modal-header {
+    background-color: #fafafa;
+    padding: 10px 30px;
+}
+
+.modal .modal-content {
+    padding: 0 !important;
+}
+
+.modal-content .content-project {
+    background-size: 100%;
+    padding: 24px;
+}
+
+/*Comments*/
+
+.myself {
+    color: @colorDefault2;
+}
+
+.fields {
+    margin: 0;
+    font-weight: 400;
+}
+
+.fields li {
+    display: inline;
+}
+
+.fields li:not(:last-child):after {
+    content: ", ";
+}
+
+.content-project img {
+    max-width: 100%;
+}
+
+/*Preloaders*/
+
+.row .col {
+    position: relative;
+}
+
+.preloader-wrapper {
+    left: 47.5%;
+    position: absolute;
+    top: 50%;
+}
+
+/*Adjust container because sidebar vertical*/
+
+.top-container-main {
+    margin-top: 5% !important;
+}
+
+.container {
+    margin: 0 auto;
+    max-width: 1280px;
+    width: 90%;
+}
+
+.container .row {
+    margin-left: -0.75rem;
+    margin-right: -0.75rem;
+}
