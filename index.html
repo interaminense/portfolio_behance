@@ -24,7 +24,7 @@
 	<header class="page-header">
 
 		<nav>
-			
+
 			<!-- Menu Vertical -->
 			<ul id="slide-out" class="side-nav fixed">
 				<li class="noPadding user-profile">
@@ -75,47 +75,52 @@
 				<a class="button-collapse top-nav full hide-on-large-only" data-activates="slide-out" href="#"><i class="medium mdi-navigation-menu"></i></a>
 			</div>
 
-			<!-- Menu horizontal -->			
+			<!-- Menu horizontal -->
 			<div class="navbar-fixed icons-top">
 				<nav class="indigo darken-4">
 					<div class="nav-wrapper">
 
-						<!-- UL left -->
-						<div ng-if="data.user.features != undefined">
-							<ul class="features right padding-modify-top">
-								<li>
-									<a class="left">FEATURED IN</a>
-									<div class="links left">
-										<a data-ng-repeat="feature in data.user.features" target="_blank" href="http://{{feature.site.domain}}" class="tooltipped left" data-position="bottom" data-delay="20" data-tooltip="Go to {{feature.site.domain}}"><img  src="{{feature.site.ribbon.image}}" /></a>
-									</div>
+						<div class="row">
+
+							<!-- UL left -->
+							<div ng-if="data.user.features != undefined">
+								<ul class="features right padding-modify-top">
+									<li>
+										<a class="left">FEATURED IN</a>
+										<div class="links left">
+											<a data-ng-repeat="feature in data.user.features" target="_blank" href="http://{{feature.site.domain}}" class="tooltipped left" data-position="bottom" data-delay="20" data-tooltip="Go to {{feature.site.domain}}"><img  src="{{feature.site.ribbon.image}}" /></a>
+										</div>
+									</li>
+								</ul>
+							</div>
+
+							<!-- UL right -->
+							<ul class="right {{data.user.features ? '' : 'padding-modify-top'}}">
+								<div class="left" ng-if="data.user.links != ''">
+									<li>
+										<a class="dropdown-button tooltipped" href='#' data-activates="links1" data-position="bottom" data-delay="20" data-tooltip="See Web References"><i class="icon-link"></i></a>
+										<ul id='links1' class='dropdown-content'>
+											<li data-ng-repeat="link in data.user.links"><a class="colorDefault" href="{{link.url}}" target="_blank">{{link.title}}</a></li>
+										</ul>
+									</li>
+								</div>
+								<li data-ng-repeat="social_link in data.user.social_links">
+									<a target="_blank" href="{{social_link.url}}" class="tooltipped" data-position="bottom" data-delay="20" data-tooltip="Go to {{social_link.service_name}}">
+										<div ng-if="social_link.service_name == 'Facebook'"><i class="icon-facebook"></i></div>
+										<div ng-if="social_link.service_name == 'Twitter'"><i class="icon-twitter"></i></div>
+										<div ng-if="social_link.service_name == 'LinkedIn'"><i class="icon-linkedin"></i></div>
+										<div ng-if="social_link.service_name == 'Tumblr'"><i class="icon-tumblr"></i></div>
+										<div ng-if="social_link.service_name == 'Pinterest'"><i class="icon-pinterest"></i></div>
+										<div ng-if="social_link.service_name == 'Instagram'"><i class="icon-instagram"></i></div>
+										<div ng-if="social_link.service_name == 'Vimeo'"><i class="icon-vimeo"></i></div>
+										<div ng-if="social_link.service_name == 'Dribbble'"><i class="icon-dribbble"></i></div>
+										<div ng-if="social_link.service_name == 'YouTube'"><i class="icon-youtube"></i></div>
+									</a>
 								</li>
 							</ul>
+
 						</div>
 
-						<!-- UL right -->
-						<ul class="right {{data.user.features ? '' : 'padding-modify-top'}}">
-							<div class="left" ng-if="data.user.links != ''">
-								<li>
-									<a class="dropdown-button tooltipped" href='#' data-activates="links1" data-position="bottom" data-delay="20" data-tooltip="See Web References"><i class="icon-link"></i></a>
-									<ul id='links1' class='dropdown-content'>
-										<li data-ng-repeat="link in data.user.links"><a class="colorDefault" href="{{link.url}}" target="_blank">{{link.title}}</a></li>
-									</ul>
-								</li>
-							</div>
-							<li data-ng-repeat="social_link in data.user.social_links">
-								<a target="_blank" href="{{social_link.url}}" class="tooltipped" data-position="bottom" data-delay="20" data-tooltip="Go to {{social_link.service_name}}">
-									<div ng-if="social_link.service_name == 'Facebook'"><i class="icon-facebook"></i></div>
-									<div ng-if="social_link.service_name == 'Twitter'"><i class="icon-twitter"></i></div>
-									<div ng-if="social_link.service_name == 'LinkedIn'"><i class="icon-linkedin"></i></div>
-									<div ng-if="social_link.service_name == 'Tumblr'"><i class="icon-tumblr"></i></div>
-									<div ng-if="social_link.service_name == 'Pinterest'"><i class="icon-pinterest"></i></div>
-									<div ng-if="social_link.service_name == 'Instagram'"><i class="icon-instagram"></i></div>
-									<div ng-if="social_link.service_name == 'Vimeo'"><i class="icon-vimeo"></i></div>
-									<div ng-if="social_link.service_name == 'Dribbble'"><i class="icon-dribbble"></i></div>
-									<div ng-if="social_link.service_name == 'YouTube'"><i class="icon-youtube"></i></div>
-								</a>
-							</li>
-						</ul>
 					</div>
 				</nav>
 			</div>
@@ -127,6 +132,19 @@
 	<main class="main" ng-controller="controllerProject">
 
 		<div class="container top-container-main">
+
+			<!-- space demo -->
+			<div class="row">
+				<div ng-show="showDemo" class="card yellow lighten-4">
+					<span ng-click="closeDemo($event)" class="icon-custom-close icon-cancel"></span>
+					<div class="card-content black-text">
+						<label for="user_name">Username</label>
+						<input id="user_name" type="text" ng-model="newUser" />
+						<button ng-click="toggleUser(newUser)" class="btn waves-effect waves-light yellow accent-4 black-text" type="submit" name="action">trocar portfolio</button>
+					</div>
+				</div>
+			</div>
+
 			<div class="row card-open">
 
 				<!-- Cards -->
@@ -145,7 +163,7 @@
 							</div>
 						</div>
 					</div>
-        
+
 					<div class="card medium transitions">
 						<div class="card-image">
 							<img class="img-card" src="{{project.covers[404]}}">
@@ -219,10 +237,6 @@
 	<!--Import jQuery before materialize.js-->
 	<script type="text/javascript" src="js/materialize.min.js"></script>
 	<!-- Script Application Angular-->
-	<script type="text/javascript">
-		var user   = 'imcreator'; //using my portfolio behance with example
-		var apiKey = 'Q3DmegPI3gPgna4Zg0BqjkGo4fdx6X01'; 
-	</script>
 	<script type="text/javascript" src="js/script-angular.js"></script>
 	<!-- Script Application jQuery-->
 	<script type="text/javascript" src="js/script-jquery.js"></script>
