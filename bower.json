@@ -1,0 +1,29 @@
+{
+  "name": "portfolio_behance",
+  "homepage": "https://github.com/interaminense/portfolio_behance",
+  "authors": [
+    "Adriano Interaminense <adriano.interaminense@gmail.com>"
+  ],
+  "description": "created from the Behance API using the Framework MaterializeCss and AngularJS",
+  "main": "js/script-angular.js",
+  "moduleType": [
+    "globals"
+  ],
+  "keywords": [
+    "portfolio",
+    "behance",
+    "angularjs",
+    "materializecss",
+    "behanceApi",
+    "API behance",
+    "behance with angularJS"
+  ],
+  "license": "MIT",
+  "ignore": [
+    "**/.*",
+    "node_modules",
+    "bower_components",
+    "test",
+    "tests"
+  ]
+}
