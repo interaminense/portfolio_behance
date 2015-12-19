@@ -193,7 +193,7 @@
 		<!-- Modal -->
 		<div id="modal1" class="modal modal-fixed-footer">
 			<div class="modal-header">
-				<h5>{{dataProject.project.name}} <a class="anchor" href="#collection"><i class="icon-comment-1"></i></a></h5>
+				<h5>{{dataProject.project.name}} <a ng-show="commentsProject.comments != ''" class="anchor" href="#collection"><i class="icon-comment-1"></i></a></h5>
 				<ul class="fields">
 					<li data-ng-repeat="field in dataProject.project.fields"><span>{{field}}</span></li>
 				</ul>
@@ -209,7 +209,7 @@
 							</div>
 							<div ng-if="module.embed" ng-bind-html="module.embed | html" class="center"></div>
 						</div>
-						<ul id="collection" class='collection with-header'>
+						<ul ng-show="commentsProject.comments != ''" id="collection" class='collection with-header'>
 							<li class="collection-header"><h5>The last 10 comments on this project</h5></li>
 							<li class="collection-item avatar" ng-repeat="comments in commentsProject.comments | limitTo:10">
 								<img src="{{comments.user.images[50]}}" alt="" class="circle">

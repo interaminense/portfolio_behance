@@ -40,7 +40,7 @@ app.controller('controllerProject', function($scope, $http){
   $uptadeProject = function(count, newUser){
     $urlProject = 'http://behance.net/v2/users/'+ newUser +'/projects?api_key='+ $apiKey + '&page=' + count + '&callback=JSON_CALLBACK';
     $http.jsonp($urlProject).success(function(data){
-      $scope.projects = [];
+      //$scope.projects = [];
       angular.forEach(data.projects, function(p){
         $scope.projects.push(p);
       });
@@ -55,13 +55,14 @@ app.controller('controllerProject', function($scope, $http){
   $scope.projects = [];
 
   $scope.toggleUser = function(newUser){
+    $scope.projects = [];
     $testUser = true;
     $loadDataUser(newUser)
     $uptadeProject(1, newUser);
   };
 
   $scope.loadProject = function(count){
-    $uptadeProject(count+1, $scope.user);
+    $uptadeProject(count+1, $scope.newUser);
   };
 
   $scope.selectProject = function(project){
